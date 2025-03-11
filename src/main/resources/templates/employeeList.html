@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>従業員情報一覧</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">従業員情報一覧</h1>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>名前</th>
+                    <th>役職</th>
+                    <th>詳細</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.id}">1</td>
+                    <td th:text="${employee.name}">山田 太郎</td>
+                    <td th:text="${employee.position}">マネージャー</td>
+                    <td><a th:href="@{/employee/{id}(id=${employee.id})}" class="btn btn-primary">詳細</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
