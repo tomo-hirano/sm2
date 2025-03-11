@@ -12,16 +12,18 @@
             <thead>
                 <tr>
                     <th>ID</th>
+                    <th>従業員番号</th>
                     <th>名前</th>
-                    <th>役職</th>
+                    <th>Email</th>
                     <th>詳細</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="employee : ${employees}">
                     <td th:text="${employee.id}">1</td>
+                    <td th:text="${employee.employeeNo}">12345</td>
                     <td th:text="${employee.name}">山田 太郎</td>
-                    <td th:text="${employee.position}">マネージャー</td>
+                    <td th:text="${employee.email}">example@example.com</td>
                     <td><a th:href="@{/employee/{id}(id=${employee.id})}" class="btn btn-primary">詳細</a></td>
                 </tr>
             </tbody>
