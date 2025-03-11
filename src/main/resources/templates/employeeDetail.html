@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>従業員詳細情報</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">従業員詳細情報</h1>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title" th:text="${employee.name}">従業員名</h5>
+                <p class="card-text"><strong>従業員番号:</strong> <span th:text="${employee.employeeNo}">12345</span></p>
+                <p class="card-text"><strong>名前(かな):</strong> <span th:text="${employee.nameKana}">やまだ たろう</span></p>
+                <p class="card-text"><strong>E-mail:</strong> <span th:text="${employee.email}">example@example.com</span></p>
+                <a href="#" class="btn btn-primary">編集</a>
+                <a href="#" class="btn btn-secondary">戻る</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

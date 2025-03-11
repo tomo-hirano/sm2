@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,16 +24,17 @@ import jp.co.litemo.sm1.service.EmployeeService;
  * 変換元: /Domain/DomainObject/Employee.vb, /Domain/Repository/IEmployeeRepository.vb, /Infrastructure/RepositoryImpl/EmployeeRepositoryImpl.vb
  * このクラスは、従業員情報のCRUD操作を提供します。
  */
-@RestController
-@RequestMapping("/api/employees")
+@Controller
 public class EmployeeController {
 
     @Autowired
     private EmployeeService employeeService;
 
     @GetMapping
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    public String getAllEmployees(Model model) {
+        List<Employee> employees = employeeService.getAllEmployees();
+        model.addAttribute("employees", employees);
+        return "employeeList";
     }
 
     @GetMapping("/{id}")
